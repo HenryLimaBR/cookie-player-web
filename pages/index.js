@@ -55,8 +55,8 @@ export default function Home() {
 				<div className={index.player}></div>
 			</div>
 
-			<script src="//cdn.jsdelivr.net/npm/eruda"></script>
-			<script>eruda.init();</script>
+			/*<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+			<script>eruda.init();</script>*/
 		</>
 	);
 }
