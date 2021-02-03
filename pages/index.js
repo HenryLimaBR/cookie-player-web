@@ -4,16 +4,16 @@ import axios from 'axios';
 
 import index from '../styles/index.module.css';
 
+import Item from '../components/Item';
+
 async function search(q) {
 	return (await axios.get(`/api/search?q=${q}`)).data;
 }
-
 async function audio(id) {
 	return (await axios.get(`/api/audio?id=${id}`)).data;
 }
 
 export default function Home() {
-
 	const [searchItems, setSearchItems] = useState(null);
 	const [player, setPlayer] = useState(null);
 
@@ -25,6 +25,12 @@ export default function Home() {
 		const formats = await audio(data.url);
 		player.src = formats[0].url;
 		player.play();
+		if ('mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({
+			title: data.title,
+			artwork: [{ src: data.image }]
+		});
+		document.getElementById('sbx').value = '';
+		setSearchItems(null);
 	}
 
 	async	function handleUserSearch(e) {
@@ -47,7 +53,7 @@ export default function Home() {
 			<div className={index.container}>
 
 				<div className={index.search_box}>
-					<input className={index.search} type='text' onKeyPress={handleUserSearch} placeholder='Search Here' />
+					<input id='sbx' className={index.search} type='text' onKeyPress={handleUserSearch} placeholder='Search Here' />
 				</div>
 
 				<ul className={index.list}>{ searchItems }</ul>
@@ -58,17 +64,5 @@ export default function Home() {
 			<script src="//cdn.jsdelivr.net/npm/eruda"></script>
 			<script>eruda.init();</script>
 		</>
-	);
-}
-
-function Item(props) {
-	function send() {
-		props.play(props.data);
-	}
-
-	return (
-		<li className={index.list_item} onClick={send}>
-			<img className={index.item_image} src={props.data.image} />
-		</li>
 	);
 }
