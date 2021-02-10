@@ -9,11 +9,15 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
+    "canvas": "^2.6.1",
     "next": "^10.0.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "yt-search": "^2.5.2",
     "ytdl": "^1.4.1"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next dev"
+  }
 }
