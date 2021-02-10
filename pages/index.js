@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
+import squary from '../services/squary'
 
 import style from '../styles/index.module.css';
 
@@ -24,9 +25,11 @@ export default function Home() {
 	async function handleUserAudio(data) {
 		const formats = await audio(data.url);
 		player.src = formats[0].url;
-		const albumImage = `/api/album?i=${data.thumbnail}`;
+		const albumImage = await squary(data.thumbnail);
 		if ('mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({
 			title: data.title,
+			artist: 'Work In Progress',
+			album: 'Work In Progress',
 			artwork: [{ src: albumImage }]
 		});
 		player.play();

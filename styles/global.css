@@ -16,6 +16,6 @@ html, body, #__next {
 @keyframes zoom {
 	from {
 		opacity: 0;
-		transform: scale(0);
+		transform: translate(100%, 0);
 	}
 }
