@@ -40,52 +40,6 @@
 	overflow-y: auto;
 }
 
-@keyframes zoom {
-	from {
-		opacity: 0;
-		transform: scale(0);
-	}
-}
-
-.list_item {
-	display: grid;
-	width: 100%;
-	height: 100%;
-	grid-template-columns: 2fr 3fr;
-	grid-template-rows: 1fr;
-	border: 1px #ffffff solid;
-	background-color: #555555;
-	overflow: hidden;
-	animation: zoom 250ms ease-out 50ms backwards;
-	transition: 100ms ease-out;
-}
-.list_item:active {
-	transform: scale(0.8);
-	z-index: 5;
-}
-
-
-.item_image {
-	width: 100%;
-	height: 100%;
-	border-right: 1px #ffffff solid;
-}
-
-.item_info {
-	display: flex;
-	width: 100%;
-	height: 100%;
-	justify-content: flex-start;
-	align-items: center;
-	flex-direction: column;
-}
-
-.item_text {
-	font-size: 12px;
-	margin: 2px;
-	text-align: center;
-}
-
 .player {
 	grid-area: Player;
 	display: flex;

@@ -1,16 +1,16 @@
-import index from '../styles/index.module.css';
+import style from './Item.module.css';
 
-export default function Item(props) {
+export default function Item({ data, play }) {
   function send() {
-    props.play(props.data);
+    play(data);
   }
 
   return (
-    <li className={index.list_item} onClick={send}>
-    	<img className={index.item_image} src={props.data.image} />
-      <div className={index.item_info}>
-       	<p className={index.item_text}>{props.data.title}</p>
-       	<p className={index.item_text}>{props.data.views} Views</p>
+    <li className={style.item} onClick={send}>
+    	<img className={style.image} src={data.image} />
+      <div className={style.info}>
+       	<p className={style.text}>{data.title}</p>
+       	<p className={style.text}>{data.views} Views</p>
      	</div>
    	</li>
   );

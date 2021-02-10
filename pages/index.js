@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
+import squary from '../services/squary';
 
-import index from '../styles/index.module.css';
+import style from '../styles/index.module.css';
 
 import Item from '../components/Item';
 
@@ -24,13 +25,12 @@ export default function Home() {
 	async function handleUserAudio(data) {
 		const formats = await audio(data.url);
 		player.src = formats[0].url;
-		player.play();
+		const albumImage = await squary(data.thumbnail);
 		if ('mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({
 			title: data.title,
-			artwork: [{ src: data.image }]
+			artwork: [{ src: albumImage }]
 		});
-		document.getElementById('sbx').value = '';
-		setSearchItems(null);
+		player.play();
 	}
 
 	async	function handleUserSearch(e) {
@@ -50,15 +50,15 @@ export default function Home() {
 				<meta name="theme-color" content="#000000" />
 			</Head>
 
-			<div className={index.container}>
+			<div className={style.container}>
 
-				<div className={index.search_box}>
-					<input id='sbx' className={index.search} type='text' onKeyPress={handleUserSearch} placeholder='Search Here' />
+				<div className={style.search_box}>
+					<input id='sbx' className={style.search} type='text' onKeyPress={handleUserSearch} placeholder='Search Here' />
 				</div>
 
-				<ul className={index.list}>{ searchItems }</ul>
+				<ul className={style.list}>{ searchItems }</ul>
 
-				<div className={index.player}></div>
+				<div className={style.player}></div>
 			</div>
 
 			<script src="//cdn.jsdelivr.net/npm/eruda"></script>
