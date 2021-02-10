@@ -7,7 +7,7 @@
 	border: 1px #ffffff solid;
 	background-color: #555555;
 	overflow: hidden;
-	animation: zoom 250ms ease-out 50ms backwards;
+	animation: zoom 300ms ease-out 50ms backwards;
 	transition: 100ms ease-out;
 }
 .item:active {
