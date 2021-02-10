@@ -1,5 +1,4 @@
-// import { loadImage, createCanvas } from 'canvas'; 
-const { loadImage, createCanvas } = require('canvas'); 
+import { loadImage, createCanvas } from 'canvas'; 
 
 export default async function album(req, res) {
 	const { i } = req.query;
