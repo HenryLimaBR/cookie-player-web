@@ -5,7 +5,7 @@ import squary from '../services/squary'
 
 import style from '../styles/index.module.css';
 
-import Item from '../components/Item';
+import List from '../components/List';
 
 async function search(q) {
 	return (await axios.get(`/api/search?q=${q}`)).data;
@@ -15,7 +15,7 @@ async function audio(id) {
 }
 
 export default function Home() {
-	const [searchItems, setSearchItems] = useState(null);
+	const [searchData, setSearchData] = useState(null);
 	const [player, setPlayer] = useState(null);
 
 	useEffect(() => {
@@ -25,6 +25,7 @@ export default function Home() {
 	async function handleUserAudio(data) {
 		const formats = await audio(data.url);
 		player.src = formats[0].url;
+		player.play();
 		const albumImage = await squary(data.thumbnail);
 		if ('mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({
 			title: data.title,
@@ -32,16 +33,12 @@ export default function Home() {
 			album: 'Work In Progress',
 			artwork: [{ src: albumImage }]
 		});
-		player.play();
 	}
 
 	async	function handleUserSearch(e) {
 		if (e.key === 'Enter') {
-			const items = await search(e.target.value);
-			const com = items.map(item => {
-				return <Item data={item} key={item.videoId} play={handleUserAudio} />;
-			});
-			setSearchItems(com);
+			const data = await search(e.target.value);
+			setSearchData(data);
 		}
 	}
 
@@ -58,7 +55,7 @@ export default function Home() {
 					<input id='sbx' className={style.search} type='text' onKeyPress={handleUserSearch} placeholder='Search Here' />
 				</div>
 
-				<ul className={style.list}>{ searchItems }</ul>
+				<List data={searchData} play={handleUserAudio} />
 
 				<div className={style.player}></div>
 			</div>
