@@ -8,9 +8,6 @@ export default async function search(req, res) {
 			if (i.type === 'video') return i;
 		}));
 	} else {
-		return res.json({
-			error: true,
-			message: 'Your Search Is Empty'
-		});
+		return res.json([]);
   }
 }
