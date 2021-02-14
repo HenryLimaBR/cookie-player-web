@@ -3,10 +3,12 @@
 	display: grid;
 	width: 100%;
 	height: 100%;
+	padding: 8px;;
 	grid-template-columns: 1fr;
-	grid-auto-rows: 96px;
-	background-color: #333333;
+	grid-auto-rows: var(--box, 100px);
+	background-color: #cfcfcf;
 	grid-gap: 8px;
 	overflow-x: hidden;
 	overflow-y: auto;
+	transition: 250ms ease-out;
 }
