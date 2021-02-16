@@ -13,7 +13,8 @@ export default function Home() {
 		<>
 			<Head>
 				<title>Cookie Web Player</title>
-				<meta name="theme-color" content="#000000" />
+				<meta name='theme-color' content='#000000' />
+				<link rel='icon' type='image/png' href='/res/img/icon.png' />
 			</Head>
 
 			<div className={style.container}>

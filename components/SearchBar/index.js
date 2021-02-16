@@ -29,12 +29,14 @@ export default function SearchBar(props) {
 				<button className={style.clear_button} onClick={clearInput}>X</button>
 			</div>
 
-			<Icon wait={props.wait} />
+			<div className={style.image_container}>
+				<Icon wait={props.wait} />
+			</div>
 		</div>
 	);
 }
 
 function Icon({ wait }) {
 	if (wait) return <Loader type='TailSpin' color='white' width={48} height={48} />
-	return <img src='/res/img/icon.png' width={48} height={48} />
+	return <img className={style.image} src='/res/img/icon.png' />
 }
