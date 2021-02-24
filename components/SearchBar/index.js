@@ -25,7 +25,7 @@ export default function SearchBar(props) {
 	return (
 		<div className={style.search_bar}>
 			<div className={style.search_container}>
-				<input className={style.input} type='text' onKeyPress={search}  ref={inputbox} placeholder='Search' />
+				<input className={style.input} type='text' onKeyPress={search} ref={inputbox} placeholder='Search' />
 				<button className={style.clear_button} onClick={clearInput}>X</button>
 			</div>
 

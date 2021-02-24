@@ -6,7 +6,6 @@
 }
 
 .search_bar {
-	grid-area: Search;
 	display: flex;
 	width: 100%;
 	height: 100%;
@@ -17,7 +16,7 @@
 .search_container {
 	position: relative;
 	display: flex;
-	width: 70%;
+	width: 80%;
 	height: 100%;
 	justify-content: center;
 	align-items: center;
@@ -31,6 +30,7 @@
 	color: #ffffff;
 	background-color: #333333;
 	font-size: 16px;
+	font-weight: 300;
 }
 
 .clear_button {
