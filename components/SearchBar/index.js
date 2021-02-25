@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import style from './style.module.css';
 import { getSearch } from '../../services/api';
-import Loader from 'react-loader-spinner';
+import Loader from '../Loader';
 
 export default function SearchBar(props) {
 	const inputbox = useRef(null);
@@ -37,6 +37,6 @@ export default function SearchBar(props) {
 }
 
 function Icon({ wait }) {
-	if (wait) return <Loader type='TailSpin' color='white' width={48} height={48} />
+	if (wait) return <Loader color="#fff" />
 	return <img className={style.image} src='/res/img/icon.png' />
 }
