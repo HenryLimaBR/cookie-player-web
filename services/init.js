@@ -1,6 +1,6 @@
 import { player_init } from './player';
 
-let delay = null;
+let interval = null;
 
 function start() {
 	player_init();
@@ -9,13 +9,11 @@ function start() {
 function check() {
 	if (window) {
 		start();
-		clearTimeout(delay);
-		delay = null;
-	} else {
-		check();
+		clearInterval(interval);
+		interval = null;
 	}
 }
 
 export function init() {
-	delay = setTimeout(check, 250);
+	interval = setInterval(check, 250);
 }
