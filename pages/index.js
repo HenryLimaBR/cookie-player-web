@@ -11,6 +11,7 @@ import PlayerBar from '../components/PlayerBar';
 export default function Home() {
 	const [search, setSearch] = useState(null);
 	const [wait, setWait] = useState(false);
+	const [cover, setCover] = useState(null);
 
 	useEffect(() => { init(); }, []);
 
@@ -18,21 +19,21 @@ export default function Home() {
 		<>
 			<Head>
 				<title>Cookie Web Player</title>
-				<meta name='theme-color' content='#000000' />
+				<meta name='theme-color' content='#111' />
 				<link rel='icon' type='image/png' href='/res/img/icon.png' />
 			</Head>
 
 			<div className={style.container}>
 				<div className={style.search_containet}>
-					<SearchBar setSearch={setSearch} wait={wait} setWait={setWait} />
+					<SearchBar setSearch={setSearch} wait={wait} setWait={setWait} cover={cover} />
 				</div>
 
 				<div className={style.list_container}>
-					<List data={search} wait={wait} setWait={setWait} />
+					<List data={search} wait={wait} setWait={setWait} setCover={setCover} />
 				</div>
 
 				<div className={style.player_container}>
-					<PlayerBar />
+					<PlayerBar setCover={setCover} />
 				</div>
 			</div>
 

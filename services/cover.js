@@ -34,3 +34,7 @@ export function init() {
 export function getSmallBounds({ width, height}) {
 	return height < width ? height : width;
 }
+
+export function readCover() {
+	return cover.url;
+}

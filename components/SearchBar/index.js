@@ -26,17 +26,18 @@ export default function SearchBar(props) {
 		<div className={style.search_bar}>
 			<div className={style.search_container}>
 				<input className={style.input} type='text' onKeyPress={search} ref={inputbox} placeholder='Search' />
-				<button className={style.clear_button} onClick={clearInput}>X</button>
+				<button className={style.clear_button} onClick={clearInput}>&#x2715;</button>
 			</div>
 
 			<div className={style.image_container}>
-				<Icon wait={props.wait} />
+				<Icon wait={props.wait} cover={props.cover} />
 			</div>
 		</div>
 	);
 }
 
-function Icon({ wait }) {
+function Icon({ wait, cover }) {
 	if (wait) return <Loader color="#fff" />
-	return <img className={style.image} src='/res/img/icon.png' />
+	const crrnt = cover ? cover : '/res/img/icon.png';
+	return <img className={style.image} src={crrnt} />
 }

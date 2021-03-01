@@ -33,14 +33,16 @@ export function createEvent(event, dest, id) {
 
 function registerEvents() {
 	if (events.length > 0) {
+		let count = 0;
 		events.forEach((e, n) => {
 			if (!registeredEvents.includes(e)) {
 				player.addEventListener(e.event, e.dest);
 				registeredEvents.push(e);
+				count++;
 			}
-			events.splice(n, 1);
 		});
-		console.log('Player: New Events Registered!');
+		events.splice(0, events.length);
+		console.log(`Player: ${count} New Events Registered!`);
 	}
 }
 

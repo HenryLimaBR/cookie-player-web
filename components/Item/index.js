@@ -4,11 +4,12 @@ import media from '../../services/media';
 
 import style from './style.module.css';
 
-export default function Item({ data, index, setWait, wait }) {
+export default function Item({ data, index, setWait, wait, setCover }) {
   async function play() {
 		setWait(true);
 		const audio = await getAudio(data.url);
 		await media(data);
+		setCover(data.image);
 		setWait(false);
 		srcPlay(audio[0].url);
   }
