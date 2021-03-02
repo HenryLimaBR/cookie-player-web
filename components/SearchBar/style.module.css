@@ -64,6 +64,6 @@
 	object-fit: cover;
 	object-position: center center;
 	animation: image 200ms ease-out backwards;
-	border: solid 1px #ffffff;
+	border: solid 1px #fff;
 	border-radius: 100%;
 }
