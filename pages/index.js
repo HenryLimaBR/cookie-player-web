@@ -36,9 +36,6 @@ export default function Home() {
 					<PlayerBar setCover={setCover} />
 				</div>
 			</div>
-
-			<script src="//cdn.jsdelivr.net/npm/eruda"></script>
-			<script>eruda.init();</script>
 		</>
 	);
 }
