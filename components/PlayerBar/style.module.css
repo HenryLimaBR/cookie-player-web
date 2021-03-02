@@ -1,0 +1,71 @@
+.player_container {
+	display: grid;
+	width: 100%;
+	height: 100%;
+	grid-template-columns: 1fr;
+	grid-template-rows: 12px 1fr;
+}
+
+/**/
+.slider_container {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.slider_bar {
+	height: 60%;
+	width: 90%;
+	background-color: #333;
+	border-radius: 8px;
+}
+
+.slider_bar_roll {
+	height: 100%;
+	background-color: #fff;
+	border-radius: 8px;
+}
+
+/**/
+.button_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.state_button {
+	display: flex;
+	width: 40px;
+	height: 40px;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	border-radius: 100%;
+	transition: 100ms ease-out;
+	user-select: none;
+}
+.state_button:active {
+	transform: scale(0.9);
+}
+
+/**/
+.play {
+	width: 20px;
+	height: 20px;
+	border-style: solid;
+	border-color: #0000 #0000 #0000 #000;
+	border-width: 10px 0 10px 20px;
+	transition: 100ms all ease-out;
+	transform: translateX(10%);
+}
+
+.pause {
+	width: 18px;
+	height: 20px;
+	border-style: double;
+	border-color: #000;
+	border-width: 0 0 0 18px;
+	transition: 100ms all ease-out;
+}
