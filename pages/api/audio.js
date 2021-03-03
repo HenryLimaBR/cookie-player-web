@@ -1,5 +1,4 @@
-//import ytdl from 'ytdl';
-import ytdl from '../../ytdl-fix/index.js'; // Temporary Fix For YTDL
+import ytdl from 'ytdl-core';
 
 export default async function source(req, res) {
 	const { id } = req.query;
