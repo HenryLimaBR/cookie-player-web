@@ -1,19 +1,20 @@
-import { player_init } from './player';
+import player from './player';
 
 let interval = null;
 
 function start() {
-	player_init();
+	player.init();
 }
 
 function check() {
-	if (window) {
-		start();
+	if (typeof window !== 'undefined') {
+		console.log(`Init: "Window Available Globally!`);
 		clearInterval(interval);
 		interval = null;
+		start();
 	}
 }
 
 export function init() {
-	interval = setInterval(check, 250);
+	interval = setInterval(check, 100);
 }

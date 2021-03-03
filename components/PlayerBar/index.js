@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import style from './style.module.css';
-import { pause, createEvent } from '../../services/player';
+import player from '../../services/player';
 
 const pbStyle = {
 	play: style.play,
@@ -11,8 +11,8 @@ export default function PlayerBar(props) {
 	const [timeData, setTimeData] = useState(0);
 	const [playBtSt, setPlayBtSt] = useState(pbStyle.play);
 
-	function timeupdateEvent({ target: player }) {
-		const { currentTime: ct, duration: fn } = player;
+	function timeupdateEvent({ target: element }) {
+		const { currentTime: ct, duration: fn } = element;
 		const perc = ct * 100 / fn;
 		setTimeData(perc);
 	}
@@ -27,14 +27,14 @@ export default function PlayerBar(props) {
 	function playEvent() { setPlayBtSt(pbStyle.pause) }
 
 	useEffect(() => {
-		createEvent('timeupdate', timeupdateEvent);
-		createEvent('ended', endedEvent);
-		createEvent('pause', pauseEvent);
-		createEvent('play', playEvent);
+		player.createEvent('timeupdate', timeupdateEvent);
+		player.createEvent('ended', endedEvent);
+		player.createEvent('pause', pauseEvent);
+		player.createEvent('play', playEvent);
 	}, [true]);
 
 	function playBtHandler() {
-		pause();
+		player.toggleState();
 	}
 
 	return (
