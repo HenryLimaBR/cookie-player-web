@@ -66,4 +66,5 @@
 	animation: image 200ms ease-out backwards;
 	border: solid 1px #fff;
 	border-radius: 100%;
+	background-color: #333;
 }
