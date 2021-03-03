@@ -9,4 +9,5 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	transition: 250ms ease-out;
+	scroll-behavior: smooth;
 }
