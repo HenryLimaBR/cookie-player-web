@@ -15,7 +15,7 @@ class Api {
 		return (await axios.get(`${this.baseURL}/api/audio?id=${id}`)).data;
 	}
 
-	cover(url) { return `${this.baseURL/api/album?i=${url}`; }
+	cover(url) { return `${this.baseURL}/api/album?i=${url}`; }
 }
 
 
