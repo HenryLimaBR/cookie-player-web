@@ -9,7 +9,7 @@ export default function Item({ data, index, setWait, wait, setCover }) {
 		setWait(true);
 		const audio = await api.audio(data.url);
 		player.src = audio[0].url;
-		await media(data);
+		await media.set(data);
 		await player.play();
 		setCover(data.image);
 		setWait(false);
