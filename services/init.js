@@ -1,8 +1,10 @@
+import cover from './cover';
 import player from './player';
 
 let interval = null;
 
 function start() {
+	cover.init();
 	player.init();
 }
 
