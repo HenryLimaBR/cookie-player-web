@@ -1,52 +1,44 @@
-let player = null;
-const events = new Array();
-const registeredEvents = new Array();
+class Player {
+	me = null;
+	eventQueue = new Array();
+	eventRegister = new Array();
 
-export function setSrc(src) {
-	player.src = src;
-}
+	set src(src) { this.me.src = src }
+	get src() { return this.me.src }
 
-export function play() {
-	try {
-		player.play();
-	} catch (err) {
-		console.warn(err);
-	} finally {
-		console.log('Player: Playing');
+	async play() { await this.me.play() }
+	async pause() { await this.me.pause() }
+
+	async toggleState() {
+		if (this.src !== '') return this.me.paused ? await this.play() : await this.pause();
+	}
+
+	registerEvents() {
+		if (this.eventQueue.length > 0) {
+			let count = 0;
+			this.eventQueue.forEach((e, n) => {
+				if (!this.eventRegister.includes(e)) {
+					this.me.addEventListener(e.event, e.dest);
+					this.eventRegister.push(e);
+					count++;
+				}
+			});
+			this.eventQueue.splice(0, this.eventQueue.length);
+			console.log(`Player: ${count} New Events Registered!`);
+		}
+	}
+
+	createEvent(event, dest, id) {
+		this.eventQueue.push({ event, dest, id });
+		console.log(`Player: New Pending Event, Queued: ${this.eventQueue.length}.`);
+		if (this.me) this.registerEvents();
+	}
+
+	init() {
+		this.me = new Audio();
+		console.log('Player: Media Element Initialized');
+		if (this.eventQueue.length > 0) this.registerEvents();
 	}
 }
 
-export function srcPlay(src) {
-	setSrc(src);
-	play();
-}
-
-export function pause() {
-	return player.paused ? player.play() : player.pause();
-}
-
-export function createEvent(event, dest, id) {
-	events.push({ event, dest, id });
-	console.log(`Player: New Pending Event, Queued: ${events.length}.`);
-	if (player) registerEvents();
-}
-
-function registerEvents() {
-	if (events.length > 0) {
-		let count = 0;
-		events.forEach((e, n) => {
-			if (!registeredEvents.includes(e)) {
-				player.addEventListener(e.event, e.dest);
-				registeredEvents.push(e);
-				count++;
-			}
-		});
-		events.splice(0, events.length);
-		console.log(`Player: ${count} New Events Registered!`);
-	}
-}
-
-export function player_init() {
-	player = new Audio();
-	if (events.length > 0) registerEvents();
-}
+export default new Player();
