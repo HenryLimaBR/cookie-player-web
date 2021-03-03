@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import style from './style.module.css';
-import { getSearch } from '../../services/api';
+import api from '../../services/api';
+
 import Loader from '../Loader';
 
 export default function SearchBar(props) {
@@ -9,7 +10,7 @@ export default function SearchBar(props) {
 	async function search(e) {
 		if(e.key === 'Enter') {
 			props.setWait(true);
-			const data = await getSearch(inputbox.current.value);
+			const data = await api.search(inputbox.current.value);
 			props.setSearch(data);
 			props.setWait(false);
 		}
