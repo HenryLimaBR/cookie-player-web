@@ -38,7 +38,7 @@ export default function SearchBar(props) {
 }
 
 function Icon({ wait, cover }) {
-	if (wait) return <Loader color="#fff" />
+	if (wait) return <Loader />
 	const crrnt = cover ? cover : '/res/img/icon.png';
 	return <img className={style.image} src={crrnt} />
 }
