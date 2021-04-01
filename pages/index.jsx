@@ -31,9 +31,7 @@ class Home extends Component {
   	return (
   		<>
 	  		<Head>
-	  			<title>Cookie Web Player</title>
-		  		<meta name='theme-color' content='#111' />
-	  			<link rel='icon' type='image/png' href='/res/img/icon.png' />
+	  			<title>Cookie Player</title>
 		  	</Head>
 
   			<div className={style.container}>

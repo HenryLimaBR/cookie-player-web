@@ -1,0 +1,15 @@
+{
+  "name": "Cookie Player Web",
+  "short-name": "Cookie Player",
+  "theme-color": "#111",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "res/img/icon.svg"
+      "type": "image/svg+xml"
+    }
+  ],
+  "splash_pages": null
+}
