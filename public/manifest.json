@@ -1,15 +1,16 @@
 {
-  "name": "Cookie Player Web",
-  "short-name": "Cookie Player",
-  "theme-color": "#111",
+  "name": "Cookie Player App",
+  "short_name": "Cookie Player",
+  "description": "Play your music directly from Youtube",
+  "lang": "en-US",
+  "start_url": "/",
   "display": "fullscreen",
-  "orientation": "portrait",
-  "scope": "/",
+  "theme_color": "#111111",
   "icons": [
     {
-      "src": "res/img/icon.svg"
-      "type": "image/svg+xml"
+      "src": "/res/img/icon.png",
+      "sizes": "256x256",
+      "type": "image/png"
     }
-  ],
-  "splash_pages": null
+  ]
 }
