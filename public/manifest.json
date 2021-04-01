@@ -1,10 +1,10 @@
 {
-  "name": "Cookie Player App",
+  "name": "Cookie Player",
   "short_name": "Cookie Player",
   "description": "Play your music directly from Youtube",
   "lang": "en-US",
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#111111",
   "icons": [
     {
