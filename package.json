@@ -10,7 +10,6 @@
   "dependencies": {
     "axios": "^0.21.1",
     "next": "^10.0.5",
-    "next-pwa": "^5.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "yt-search": "^2.5.2",

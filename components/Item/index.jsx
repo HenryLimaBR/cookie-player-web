@@ -7,16 +7,21 @@ import style from './style.module.css'
 export default function Item({ item, index, setWait, wait, setCover }) {
   async function play() {
 		setWait(true)
-		const audio = await api.audio(item.url);
-		player.src = audio[0].url;
+		const audio = await api.audio(item.url)
+		player.src = audio[0].url
 		await media.set(item)
-		await player.play();
-		setCover(item.image);
-		setWait(false);
+		try {
+		  await player.play()
+  		setCover(item.image)
+		}
+		catch (err) {
+		  console.warn("This Media Can't Be Played!", err)
+		}
+		setWait(false)
   }
 
   return (
-    <li className={style.item} onClick={play} style={{ animationDelay: `${index * 100}ms` }}>
+    <li className={style.item} onClick={play}>
 			<div className={style.imgcontainer}>
     		<img className={style.image} src={item.image} />
 				<p className={style.timestamp}>{item.timestamp}</p>
@@ -26,5 +31,5 @@ export default function Item({ item, index, setWait, wait, setCover }) {
        	<p className={style.text}>{item.views} Views</p>
      	</div>
    	</li>
-  );
+  )
 }

@@ -1,7 +1,20 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import '../styles/global.css'
 
+import player from '../services/player'
+import cover from '../services/cover'
+
 export default function App({ Component, pageProps }) {
+  function init() {
+    player.init()
+    cover.init()
+  }
+
+  useEffect(() => {
+    window.addEventListener('load', init)
+  }, [])
+
 	return (
 	  <>
   	  <Head>

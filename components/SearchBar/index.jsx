@@ -1,44 +1,53 @@
-import { useState, useEffect, useRef } from 'react';
-import style from './style.module.css';
-import api from '../../services/api';
+import { Component, createRef } from 'react'
+import style from './style.module.css'
+import api from '../../services/api'
 
-import Loader from '../Loader';
+import Loader from '../Loader'
 
-export default function SearchBar(props) {
-	const inputbox = useRef(null);
+class SearchBar extends Component {
+	constructor(props) {
+	  super(props)
+	  this.inputbox = createRef(null)
+	  this.search = this.search.bind(this)
+	  this.clearInput = this.clearInput.bind(this)
+  }
 
-	async function search(e) {
+	async search(e) {
 		if(e.key === 'Enter') {
-			props.setWait(true);
-			const data = await api.search(inputbox.current.value);
-			props.setSearch(data);
-			props.setWait(false);
+			this.props.setWait(true)
+			const data = await api.search(this.inputbox.current.value)
+			this.props.setSearch(data)
+			this.props.setWait(false)
 		}
 	}
 
-	function clearInput() {
-		if (inputbox.current.value.length > 0) {
-			inputbox.current.value = '';
+	clearInput() {
+		if (this.inputbox.current.value.length > 0) {
+			this.inputbox.current.value = ''
 		}
-		inputbox.current.focus();
+		this.inputbox.current.focus()
 	}
 
-	return (
-		<div className={style.search_bar}>
-			<div className={style.search_container}>
-				<input className={style.input} type='text' onKeyPress={search} ref={inputbox} placeholder='Search' />
-				<button className={style.clear_button} onClick={clearInput}>&#x2715;</button>
-			</div>
+	render() {
+	  return (
+		  <div className={style.search_bar}>
+			  <div className={style.search_container}>
+				  <input className={style.input} type='text' onKeyPress={this.search} ref={this.inputbox} placeholder='Search' />
+  				<button className={style.clear_button} onClick={this.clearInput}>&#x2715;</button>
+	  		</div>
 
-			<div className={style.image_container}>
-				<Icon wait={props.wait} cover={props.cover} />
-			</div>
-		</div>
-	);
+		  	<div className={style.image_container}>
+			  	<Icon wait={this.props.wait} cover={this.props.cover} />
+		  	</div>
+  		</div>
+	  )
+  }
 }
 
-function Icon({ wait, cover }) {
-	if (wait) return <Loader />
-	const crrnt = cover ? cover : '/res/img/icon.png';
-	return <img className={style.image} src={crrnt} />
+function Icon(props) {
+	if (props.wait) return <Loader />
+	const src  = props.cover ? props.cover : '/res/img/icon.png'
+	return <img className={style.image} src={src} />
 }
+
+export default SearchBar

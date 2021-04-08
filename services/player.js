@@ -1,12 +1,18 @@
+import axios from 'axios'
+import api from './api'
+
 class Player {
-	me = null;
-	eventQueue = new Array();
-	eventRegister = new Array();
+	me = null
+	eventQueue = new Array()
+	eventRegister = new Array()
 
 	set src(src) { this.me.src = src }
 	get src() { return this.me.src }
 
-	async play() { await this.me.play() }
+	async play() {
+	  await this.me.play()
+	}
+
 	async pause() { await this.me.pause() }
 
 	async toggleState() {

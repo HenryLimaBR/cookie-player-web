@@ -2,8 +2,6 @@ import { Component } from 'react'
 import Head from 'next/head'
 import style from '../styles/index.module.css'
 
-import { init } from  '../services/init'
-
 import SearchBar from '../components/SearchBar'
 import List from '../components/List'
 import PlayerBar from '../components/PlayerBar'
@@ -14,14 +12,13 @@ class Home extends Component {
     this.state = {
       search: null,
       wait: false,
-      cover: null
+      cover: null,
+      currentPage: 'search'
     }
     this.search = this.search.bind(this)
     this.wait = this.wait.bind(this)
     this.cover = this.cover.bind(this)
   }
-
-	componentDidMount() { init() }
 
 	search(value) { this.setState({ search: value }) }
 	wait(value) { this.setState({ wait: value }) }
@@ -35,12 +32,14 @@ class Home extends Component {
 		  	</Head>
 
   			<div className={style.container}>
-	  			<div className={style.search_containet}>
+	  			<div className={style.search_container}>
 		  			<SearchBar setSearch={this.search} wait={this.state.wait} setWait={this.wait} cover={this.state.cover} />
 			  	</div>
 
   				<div className={style.list_container}>
-	  				<List search={this.state.search} wait={this.state.wait} setWait={this.wait} setCover={this.cover} />
+  				  <Menu select={this.state.currentPage}>
+   	  				<List key='search' search={this.state.search} wait={this.state.wait} setWait={this.wait} setCover={this.cover} />
+  				  </Menu>
 		  		</div>
 
 			  	<div className={style.player_container}>
@@ -49,10 +48,25 @@ class Home extends Component {
 	  		</div>
 
 		  	<script src="//cdn.jsdelivr.net/npm/eruda"></script>
-  			<script>eruda.init();</script>
+  			<script>eruda.init()</script>
 	  	</>
   	)
   }
 }
 
 export default Home
+
+class Menu extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    switch (typeof this.props.children) {
+      case 'object': return this.props.children
+      case 'array': return this.props.children.filter(e => (e.key === this.props.select))
+      case 'undefined': return <h1>Empty Menu</h1>
+      default: throw new Error('Menu Received a Unexpected Type')
+    }
+  }
+}
