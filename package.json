@@ -6,7 +6,7 @@
   "repository": "git@github.com:HenryLimaBR/cookie-player-web.git",
   "author": "HenryLimaBR <djfilipebr@gmail.com>",
   "license": "GPL-3.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "axios": "^0.21.1",
     "next": "^10.0.5",
@@ -15,9 +15,7 @@
     "yt-search": "^2.5.2",
     "ytdl-core": "^4.5.0"
   },
-  "devDependencies": {
-    "eruda": "^2.4.1"
-  },
+  "devDependencies": {},
   "scripts": {
     "dev": "next dev"
   }
