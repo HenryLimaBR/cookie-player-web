@@ -1,40 +1,36 @@
 import axios from 'axios';
+import api from './api';
 
-const cover = { canvas: null, ctx: null, url: null };
+class Cover {
+	canvas = null;
+	ctx = null;
+	url = null;
 
-export default async function getCover(url) {
-	if (!cover.canvas) init();
-	if (cover.url) URL.revokeObjectURL(cover.url);
+	getSmallAxis({ width, height }) {
+		return height < width ? height : width;
+	}
 
-	const img = new Image();
-	await new Promise((res, rej) => {
-		img.addEventListener('load', res);
-		img.src = `/api/album?i=${url}`;
-	});
+	async process(url) {
+		if (this.url) URL.revokeObjectURL(this.url);
+		const img = new Image();
+		await new Promise((res, rej) => {
+			img.addEventListener('load', res);
+			img.src = api.cover(url);
+		});
+		const smallAxisRes = this.getSmallAxis(img);
+		this.canvas.width = smallAxisRes;
+		this.canvas.height = smallAxisRes;
+		this.ctx.translate(-this.canvas.width * 0.25, 0);
+		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+		this.ctx.drawImage(img, 0, 0);
+		this.url = this.canvas.toDataURL('image/jpeg', 1);
+		return this.url;
+	}
 
-	const { canvas, ctx } = cover;
-	const res = getSmallBounds(img);
-	canvas.width = res;
-	canvas.height = res;
-
-	ctx.translate(-canvas.width * 0.25, 0);
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-	ctx.drawImage(img, 0, 0);
-
-	cover.url = canvas.toDataURL('image/jpeg');
-
-	return cover.url;
+	init() {
+		this.canvas = document.createElement('canvas');
+		this.ctx = this.canvas.getContext('2d');
+	}
 }
 
-export function init() {
-	cover.canvas = document.createElement('canvas');
-  cover.ctx = cover.canvas.getContext('2d');
-}
-
-export function getSmallBounds({ width, height}) {
-	return height < width ? height : width;
-}
-
-export function readCover() {
-	return cover.url;
-}
+export default new Cover();
