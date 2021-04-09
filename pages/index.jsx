@@ -5,6 +5,8 @@ import style from '../styles/index.module.css'
 import SearchBar from '../components/SearchBar'
 import List from '../components/List'
 import PlayerBar from '../components/PlayerBar'
+import Switch from '../components/Switch'
+import Eruda from '../components/Eruda'
 
 class Home extends Component {
   constructor(props) {
@@ -37,9 +39,9 @@ class Home extends Component {
 			  	</div>
 
   				<div className={style.list_container}>
-  				  <Menu select={this.state.currentPage}>
+  				  <Switch select={this.state.currentPage}>
    	  				<List key='search' search={this.state.search} wait={this.state.wait} setWait={this.wait} setCover={this.cover} />
-  				  </Menu>
+  				  </Switch>
 		  		</div>
 
 			  	<div className={style.player_container}>
@@ -47,8 +49,7 @@ class Home extends Component {
 			  	</div>
 	  		</div>
 
-		  	<script src="//cdn.jsdelivr.net/npm/eruda"></script>
-  			<script>eruda.init()</script>
+	  		<Eruda isDev={this.props.dev} />
 	  	</>
   	)
   }
@@ -56,17 +57,14 @@ class Home extends Component {
 
 export default Home
 
-class Menu extends Component {
-  constructor(props) {
-    super(props)
-  }
+export async function getStaticProps() {
+  const dev = !process.env.VERCEL_ENV || process.env.VERCEL_ENV !== 'production'
 
-  render() {
-    switch (typeof this.props.children) {
-      case 'object': return this.props.children
-      case 'array': return this.props.children.filter(e => (e.key === this.props.select))
-      case 'undefined': return <h1>Empty Menu</h1>
-      default: throw new Error('Menu Received a Unexpected Type')
+  console.log(dev)
+
+  return {
+    props: {
+      dev
     }
   }
 }
