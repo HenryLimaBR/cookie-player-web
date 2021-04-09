@@ -8,6 +8,14 @@ import PlayerBar from '../components/PlayerBar'
 import Switch from '../components/Switch'
 import Eruda from '../components/Eruda'
 
+import player from '../services/player'
+import cover from '../services/cover'
+
+function init() {
+  player.init()
+  cover.init()
+}
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -20,6 +28,10 @@ class Home extends Component {
     this.search = this.search.bind(this)
     this.wait = this.wait.bind(this)
     this.cover = this.cover.bind(this)
+  }
+
+  componentDidMount() {
+    window.addEventListener('load', init)
   }
 
 	search(value) { this.setState({ search: value }) }
@@ -59,8 +71,6 @@ export default Home
 
 export async function getStaticProps() {
   const dev = !process.env.VERCEL_ENV || process.env.VERCEL_ENV !== 'production'
-
-  console.log(dev)
 
   return {
     props: {

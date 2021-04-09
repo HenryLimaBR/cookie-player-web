@@ -1,6 +1,3 @@
-import axios from 'axios'
-import api from './api'
-
 class Player {
 	me = null
 	eventQueue = new Array()
@@ -16,35 +13,35 @@ class Player {
 	async pause() { await this.me.pause() }
 
 	async toggleState() {
-		if (this.src !== '') return this.me.paused ? await this.play() : await this.pause();
+		if (this.src !== '') return this.me.paused ? await this.play() : await this.pause()
 	}
 
 	registerEvents() {
 		if (this.eventQueue.length > 0) {
-			let count = 0;
+			let count = 0
 			this.eventQueue.forEach((e, n) => {
 				if (!this.eventRegister.includes(e)) {
-					this.me.addEventListener(e.event, e.dest);
-					this.eventRegister.push(e);
-					count++;
+					this.me.addEventListener(e.event, e.dest)
+					this.eventRegister.push(e)
+					count++
 				}
-			});
-			this.eventQueue.splice(0, this.eventQueue.length);
-			console.log(`Player: ${count} New Events Registered!`);
+			})
+			this.eventQueue.splice(0, this.eventQueue.length)
+			console.log(`Player: ${count} New Events Registered!`)
 		}
 	}
 
 	createEvent(event, dest, id) {
-		this.eventQueue.push({ event, dest, id });
-		console.log(`Player: New Pending Event, Queued: ${this.eventQueue.length}.`);
-		if (this.me) this.registerEvents();
+		this.eventQueue.push({ event, dest, id })
+		console.log(`Player: New Pending Event, Queued: ${this.eventQueue.length}.`)
+		if (this.me) this.registerEvents()
 	}
 
 	init() {
 		this.me = new Audio();
-		console.log('Player: Media Element Initialized');
-		if (this.eventQueue.length > 0) this.registerEvents();
+		console.log('Player: Media Element Initialized')
+		if (this.eventQueue.length > 0) this.registerEvents()
 	}
 }
 
-export default new Player();
+export default new Player()
