@@ -8,7 +8,13 @@ import PlayerBar from '../components/PlayerBar'
 import Switch from '../components/Switch'
 import Eruda from '../components/Eruda'
 
-import init from '../services/init'
+import player from '../services/player'
+import cover from '../services/cover'
+
+function init() {
+  player.init()
+  cover.init()
+}
 
 class Home extends Component {
   constructor(props) {
