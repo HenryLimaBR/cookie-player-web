@@ -31,14 +31,14 @@ class SearchBar extends Component {
 	render() {
 	  return (
 		  <div className={style.search_bar}>
+		  	<div className={style.image_container}>
+			  	<Icon wait={this.props.wait} cover={this.props.cover} />
+		  	</div>
+
 			  <div className={style.search_container}>
 				  <input className={style.input} type='text' onKeyPress={this.search} ref={this.inputbox} placeholder='Search' />
   				<button className={style.clear_button} onClick={this.clearInput}>&#x2715;</button>
 	  		</div>
-
-		  	<div className={style.image_container}>
-			  	<Icon wait={this.props.wait} cover={this.props.cover} />
-		  	</div>
   		</div>
 	  )
   }

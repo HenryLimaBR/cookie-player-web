@@ -17,5 +17,5 @@
 	border-radius: 100%;
 	border-width: 1px;
 	border-style: solid;
-	animation: spin 1s ease infinite reverse backwards;
+	animation: spin 1s ease infinite backwards;
 }
