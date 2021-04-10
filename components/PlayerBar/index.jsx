@@ -35,7 +35,6 @@ class PlayerBar extends Component {
 		  percentage: 0,
 		  btState: pbStyle.play
 		})
-		this.props.setCover(null);
 	}
 
 	pauseEvent() { this.setState({ btState: pbStyle.play }) }
