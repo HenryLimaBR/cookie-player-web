@@ -2,7 +2,7 @@ import { Component, createRef } from 'react'
 import style from './style.module.css'
 import api from '../../services/api'
 
-import Loader from '../Loader'
+import Icon from '../Icon'
 
 class SearchBar extends Component {
 	constructor(props) {
@@ -42,12 +42,6 @@ class SearchBar extends Component {
   		</div>
 	  )
   }
-}
-
-function Icon(props) {
-	if (props.wait) return <Loader />
-	const src  = props.cover ? props.cover : '/res/img/icon.png'
-	return <img className={style.image} src={src} />
 }
 
 export default SearchBar
