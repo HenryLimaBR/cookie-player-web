@@ -32,6 +32,7 @@ class PlayerBar extends Component {
 	endedEvent() {
 		this.setState({
 		  currentTime: 0,
+		  percentage: 0,
 		  btState: pbStyle.play
 		})
 		this.props.setCover(null);
