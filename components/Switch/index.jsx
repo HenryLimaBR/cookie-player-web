@@ -6,12 +6,13 @@ class Switch extends Component {
   }
 
   render() {
-    switch (typeof this.props.children) {
-      case 'object': return this.props.children
-      case 'array': return this.props.children.filter(e => (e.key === this.props.select))
-      case 'undefined': return <h1>Empty Menu</h1>
-      default: throw new Error('Menu Received a Unexpected Type')
+    const types = {
+      'object': () => (this.props.children),
+      'array': () => (this.props.children.filter(e => (e.key === this.props.select))),
+      'undefined': () => (<h1>Empty Switch</h1>),
+      'error': () => (<h1>Type Error</h1>)
     }
+    return types[typeof this.props.children]() || types['error']()
   }
 }
 

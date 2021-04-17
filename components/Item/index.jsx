@@ -15,6 +15,7 @@ export default function Item({ item, index, setWait, wait, setCover }) {
   		setCover(item.image)
 		}
 		catch (err) {
+		  setCover(null)
 		  console.warn("This Media Can't Be Played!", err)
 		}
 		setWait(false)

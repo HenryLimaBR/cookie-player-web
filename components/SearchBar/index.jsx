@@ -2,7 +2,7 @@ import { Component, createRef } from 'react'
 import style from './style.module.css'
 import api from '../../services/api'
 
-import Loader from '../Loader'
+import Icon from '../Icon'
 
 class SearchBar extends Component {
 	constructor(props) {
@@ -31,23 +31,17 @@ class SearchBar extends Component {
 	render() {
 	  return (
 		  <div className={style.search_bar}>
+		  	<div className={style.image_container}>
+			  	<Icon wait={this.props.wait} cover={this.props.cover} />
+		  	</div>
+
 			  <div className={style.search_container}>
 				  <input className={style.input} type='text' onKeyPress={this.search} ref={this.inputbox} placeholder='Search' />
   				<button className={style.clear_button} onClick={this.clearInput}>&#x2715;</button>
 	  		</div>
-
-		  	<div className={style.image_container}>
-			  	<Icon wait={this.props.wait} cover={this.props.cover} />
-		  	</div>
   		</div>
 	  )
   }
-}
-
-function Icon(props) {
-	if (props.wait) return <Loader />
-	const src  = props.cover ? props.cover : '/res/img/icon.png'
-	return <img className={style.image} src={src} />
 }
 
 export default SearchBar
