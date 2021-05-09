@@ -1,9 +1,15 @@
-namespace RC {
-  interface HomeProps {}
-  interface HomeState {
-    search: object[]
-    cover: string
-    wait: boolean
-    currentPage: string
+namespace FE {
+  namespace RC {
+    interface HomeProps { }
+    interface HomeState { }
+  }
+  
+  namespace SV {
+    namespace Player {
+      type event = {
+        event: any
+        dest: () => any
+      }
+    }
   }
 }
