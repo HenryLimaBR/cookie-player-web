@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import style from '../styles/404.module.css'
+import style from '../styles/404.module.scss'
 
 
 class NotFound extends Component {
