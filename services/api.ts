@@ -10,7 +10,7 @@ class Api {
 	}
 
 	async search(q: string) {
-		return (await axios.get(`${this.baseURL}/api/search?q=${q}`)).data as yts.SearchResult
+		return (await axios.get(`${this.baseURL}/api/search?q=${q}`)).data as yts.VideoSearchResult[]
 	}
 
 	async audio(id: string) {
