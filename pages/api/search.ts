@@ -11,7 +11,7 @@ async function search(req: NextApiRequest, res: NextApiResponse<yts.VideoSearchR
 		return res.status(202).json(search.videos)
 	} else {
 		return res.status(400).json([])
-  }
+	}
 }
 
 export default search
