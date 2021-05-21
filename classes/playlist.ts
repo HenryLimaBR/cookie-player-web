@@ -1,6 +1,7 @@
 class Playlist {
-	musicList = Array();
+	musicList = Array()
 	lastListenedMusic = 0;
+
 	info = {
 		name: '',
 		desc: 'A Common Playlist!',
@@ -12,11 +13,9 @@ class Playlist {
 		listenedAt: null
 	};
 
-	constructor(info = {
-		name, desc
-	}) {
-		
+	constructor(data: { name: string, desc: string }) {
+
 	}
 }
 
-module.exports = Playlist;
+export default Playlist
