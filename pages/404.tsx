@@ -1,9 +1,7 @@
-import { Component } from 'react'
-
+import React from 'react'
 import style from '../styles/404.module.scss'
 
-
-class NotFound extends Component {
+class NotFound extends React.Component {
   render() {
     return (
       <div className={style.container}>
