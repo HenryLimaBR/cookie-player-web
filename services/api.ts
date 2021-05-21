@@ -18,8 +18,6 @@ class Api {
 	}
 
 	cover(url: string) { return `${this.baseURL}/api/album?i=${url}` }
-
-	async suggested() { return (await axios.get('https://gist.githubusercontent.com/HenryLimaBR/a7f84c4feae0f4f2f290499c16762de6/raw/93f456843b433a2883fdfd6b50e632fad76e4835/suggested.json')).data as yts.VideoSearchResult[] }
 }
 
 
