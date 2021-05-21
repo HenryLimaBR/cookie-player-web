@@ -1,7 +1,6 @@
-
 namespace RC {
   // Home Interfaces
-  interface HomeProps { }
+  interface HomeProps {}
   interface HomeState {
     routerDest: string
     searchResults: yts.VideoSearchResult[]

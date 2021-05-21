@@ -6,6 +6,7 @@ namespace Services {
       options?: boolean | AddEventListenerOptions | undefined
     }
   }
+
   namespace Log {
     type CSS = {
       backgroundColor?: string
