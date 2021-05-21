@@ -1,0 +1,74 @@
+.item {
+  --normal: #0004;
+  --active: #0008;
+  display: grid;
+  grid-template-columns: calc(100vh / 12) 1fr 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  background-color: var(--normal);
+
+  &:hover {
+    background-color: var(--active);
+  }
+}
+
+.image_container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .play {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-style: solid;
+    border-color: #fff0 #fff0 #fff0 #ff5555;
+    border-width: 10px 0 10px 20px;
+    transition: 100ms all ease-out;
+    transform: translateX(10%);
+  }
+
+  .pause {
+    position: absolute;
+    width: 18px;
+    height: 20px;
+    border-style: double;
+    border-color: #ff5555;
+    border-width: 0 0 0 18px;
+    transition: 100ms all ease-out;
+  }
+}
+
+.image {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  object-position: center;
+  transition: 250ms;
+}
+
+.title_container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.title {
+  text-align: center;
+  user-select: none;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 400px) {
+  .title {
+    font-size: 12px;
+  }
+}
