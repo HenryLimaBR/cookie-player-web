@@ -4,7 +4,7 @@ import style from './style.module.scss'
 
 import Item from '../Item'
 
-class Search extends React.Component<RC.SearchProps, RC.SearchState> {
+class Search extends React.Component<RC.SearchProps> {
   constructor(props: RC.SearchProps) {
     super(props)
   }

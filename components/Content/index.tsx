@@ -4,16 +4,17 @@ import style from './style.module.scss'
 
 import Router from '../Router'
 import Search from '../Search'
-import api from '../../services/api'
+import SideButton from '../SideButton'
 
-class Content extends React.Component<RC.ContentProps, RC.ContentState> {
+class Content extends React.Component<RC.ContentProps> {
   constructor(props: RC.ContentProps) {
     super(props)
   }
-  
+
   render() {
     return (
       <main className={style.container}>
+        <SideButton />
         <Router routerDest={this.props.routerDest}>
           <Search
             key='search'

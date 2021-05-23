@@ -1,6 +1,6 @@
 namespace RC {
   // Home Interfaces
-  interface HomeProps {}
+  interface HomeProps { }
   interface HomeState {
     routerDest: string
     searchResults: yts.VideoSearchResult[]
@@ -17,7 +17,6 @@ namespace RC {
     playingNow: string
     setPlayingNow: setPlayingNow
   }
-  interface ContentState { }
 
   // Search Interfaces
   interface SearchProps {
@@ -26,7 +25,6 @@ namespace RC {
     playingNow: string
     setPlayingNow: setPlayingNow
   }
-  interface SearchState { }
 
   // Item Interfaces
   interface ItemProps {
@@ -35,17 +33,17 @@ namespace RC {
     playingNow: string
     setPlayingNow: setPlayingNow
   }
-  interface ItemState { }
+  interface ItemState {
+    isCurrentPlaying: boolean
+  }
 
   // Control Interfaces
   interface ControlProps {
     setRouterDest: setRouterDest
   }
-  interface ControlState { }
 
   // Router Interfaces
   interface RouterProps {
     routerDest: string
   }
-  interface RouterState { }
 }

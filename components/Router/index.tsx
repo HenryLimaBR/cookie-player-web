@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Router extends React.Component<RC.RouterProps, RC.RouterState> {
+class Router extends React.Component<RC.RouterProps> {
   constructor(props: RC.RouterProps) {
     super(props)
   }

@@ -9,14 +9,22 @@ class Player {
 
 	async play() {
 		await this.element!.play()
+		return this.isPlaying
 	}
 
-	async pause() { await this.element!.pause() }
+	async pause() {
+		await this.element!.pause()
+		return this.isPlaying
+	}
 
 	async toggleState() {
 		if (this.src !== '') {
 			return this.element!.paused ? await this.play() : await this.pause()
 		}
+	}
+
+	get isPlaying(): boolean {
+		return !this.element!.paused
 	}
 
 	get volume() {
