@@ -1,28 +1,31 @@
 namespace RC {
+  type setRouterDest = (route: string) => void
+  type setSearchResults = (data: searchResults) => void
+  type searchResults = yts.VideoSearchResult[]
+  type setPlayingNow = (item: yts.VideoSearchResult) => void
+  type playingNow = yts.VideoSearchResult
+  
   // Home Interfaces
   interface HomeProps { }
   interface HomeState {
     routerDest: string
-    searchResults: yts.VideoSearchResult[]
-    playingNow: string
+    searchResults: searchResults
+    playingNow: playingNow
   }
-  type setRouterDest = (route: string) => void
-  type setSearchResults = (data: yts.VideoSearchResult[]) => void
-  type setPlayingNow = (id: string) => void
   // Content Interfaces
   interface ContentProps {
     routerDest: string
-    searchResults: yts.VideoSearchResult[]
+    searchResults: searchResults
     setSearchResults: setSearchResults
-    playingNow: string
+    playingNow: playingNow
     setPlayingNow: setPlayingNow
   }
 
   // Search Interfaces
   interface SearchProps {
-    searchResults: yts.VideoSearchResult[]
+    searchResults: searchResults
     setSearchResults: setSearchResults
-    playingNow: string
+    playingNow: playingNow
     setPlayingNow: setPlayingNow
   }
 
@@ -30,7 +33,7 @@ namespace RC {
   interface ItemProps {
     info: yts.VideoSearchResult
     index: number
-    playingNow: string
+    playingNow: playingNow
     setPlayingNow: setPlayingNow
   }
   interface ItemState {

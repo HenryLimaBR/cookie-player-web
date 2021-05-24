@@ -12,6 +12,7 @@ import yts from 'yt-search'
 import api from '../services/api'
 
 import suggested from '../public/suggested.json'
+import player from '../services/player'
 
 class Home extends React.Component<RC.HomeProps, RC.HomeState> {
 	constructor(props: RC.HomeProps) {
@@ -19,7 +20,7 @@ class Home extends React.Component<RC.HomeProps, RC.HomeState> {
 		this.state = {
 			routerDest: 'search',
 			searchResults: [],
-			playingNow: ''
+			playingNow: {} as RC.playingNow
 		}
 		this.setRouterDest = this.setRouterDest.bind(this)
 		this.setSearchResults = this.setSearchResults.bind(this)
@@ -29,6 +30,12 @@ class Home extends React.Component<RC.HomeProps, RC.HomeState> {
 	componentDidMount() {
 		log.c('| Cookie Player Web - Welcome |')
 		window.addEventListener('load', init)
+		player.createEvent({
+			event: 'ended',
+			listener: () => {
+				this.setState({ playingNow: {} as RC.playingNow })
+			}
+		})
 		window.search = async (search) => {
 			const data = await api.search(search)
 			this.setSearchResults(data)
@@ -45,8 +52,8 @@ class Home extends React.Component<RC.HomeProps, RC.HomeState> {
 		this.setState({ searchResults: data })
 	}
 
-	setPlayingNow(id: string) {
-		this.setState({ playingNow: id })
+	setPlayingNow(item: RC.playingNow) {
+		this.setState({ playingNow: item })
 	}
 
 	render() {
