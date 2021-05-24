@@ -24,7 +24,7 @@ class Item extends React.Component<RC.ItemProps, RC.ItemState> {
       player.src = filtered.url
       player.volume = 25
       player.play().then(() => {
-        this.props.setPlayingNow(this.props.info.videoId)
+        this.props.setPlayingNow(this.props.info)
         this.setState({ isCurrentPlaying: player.isPlaying })
       })
     } else {
@@ -35,7 +35,7 @@ class Item extends React.Component<RC.ItemProps, RC.ItemState> {
   }
 
   render() {
-    const isPlayingNow = this.props.info.videoId === this.props.playingNow
+    const isPlayingNow = this.props.info === this.props.playingNow
     return (
       <li
         className={style.item} style={{
