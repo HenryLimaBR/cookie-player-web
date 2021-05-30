@@ -22,28 +22,6 @@
   border-radius: 6px;
   overflow: hidden;
 
-  .play {
-    position: absolute;
-    text-align: center;
-    font-family: "Anicons Regular";
-    font-size: 32px;
-    user-select: none;
-    color: #50fa7b;
-    transition: 250ms ease;
-    font-variation-settings: "TIME" 1;
-  }
-
-  .pause {
-    position: absolute;
-    text-align: center;
-    font-family: "Anicons Regular";
-    font-size: 32px;
-    user-select: none;
-    color: #50fa7b;
-    transition: 250ms ease;
-    font-variation-settings: "TIME" 100;
-  }
-
   .image {
     width: 100%;
     height: 100%;
@@ -51,6 +29,31 @@
     object-position: center;
     transition: 500ms ease;
     user-select: none;
+  }
+
+  &:hover > .music_state {
+    opacity: 1;
+  }
+
+  .music_state {
+    position: absolute;
+    height: 50%;
+    opacity: 0;
+    text-align: center;
+    font-family: "Anicons Regular";
+    font-size: 32px;
+    line-height: 50%;
+    user-select: none;
+    color: #50fa7b;
+    transition: 500ms ease;
+
+    &.play {
+      font-variation-settings: "TIME" 1;
+    }
+
+    &.pause {
+      font-variation-settings: "TIME" 100;
+    }
   }
 }
 

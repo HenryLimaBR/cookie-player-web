@@ -4,7 +4,7 @@ namespace RC {
   type searchResults = yts.VideoSearchResult[]
   type setPlayingNow = (item: yts.VideoSearchResult) => void
   type playingNow = yts.VideoSearchResult
-  
+
   // Home Interfaces
   interface HomeProps { }
   interface HomeState {
@@ -38,6 +38,7 @@ namespace RC {
   }
   interface ItemState {
     isCurrentPlaying: boolean
+    loadingMedia: boolean
   }
 
   // Control Interfaces

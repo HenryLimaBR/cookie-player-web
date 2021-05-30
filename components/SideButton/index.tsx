@@ -6,7 +6,8 @@ class SideButton extends React.Component {
   render() {
     return (
       <main className={style.container}>
-        <div className={style.icon}>A</div>
+        <div className={`${style.icon} ${style.search_icon}`}>5</div>
+        <div className={`${style.icon} ${style.menu_icon}`}>A</div>
       </main>
     )
   }
