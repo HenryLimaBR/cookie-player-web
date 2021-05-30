@@ -3,11 +3,17 @@ class Player {
 	private element: HTMLAudioElement | null = null
 	private eventQueue: Services.Player.EventListener[] = new Array()
 	private eventRegister: Services.Player.EventListener[] = new Array()
+	private lastMedia: string = '00000000'
+
+	get current() { return this.lastMedia }
 
 	set src(src) { this.element!.src = src }
 	get src() { return this.element!.src }
 
-	async play() {
+	async play(id?: string) {
+		if (id) {
+			this.lastMedia = id
+		}
 		await this.element!.play()
 		return this.isPlaying
 	}
@@ -48,19 +54,19 @@ class Player {
 				}
 			})
 			this.eventQueue.splice(0, this.eventQueue.length)
-			log.c(`Player: ${count} New Events Registered!`, { size: 12 })
+			log.colored(`Player: ${count} New Events Registered!`)
 		}
 	}
 
 	createEvent({ event, listener }: Services.Player.EventListener) {
 		this.eventQueue.push({ event, listener })
-		log.c(`Player: New Pending Event, Queued: ${this.eventQueue.length}.`, { size: 12 })
+		log.colored(`Player: New Pending Event, Queued: ${this.eventQueue.length}.`)
 		if (this.element) this.registerEvents()
 	}
 
 	init() {
 		this.element = new Audio();
-		log.c('Player: Media Element Initialized', { size: 12 })
+		log.colored('Player: Media Element Initialized')
 		if (this.eventQueue.length > 0) this.registerEvents()
 	}
 }

@@ -28,7 +28,7 @@ class Home extends React.Component<RC.HomeProps, RC.HomeState> {
 	}
 
 	componentDidMount() {
-		log.c('| Cookie Player Web - Welcome |')
+		log.colored('| Cookie Player Web - Welcome |')
 		window.addEventListener('load', init)
 		player.createEvent({
 			event: 'ended',

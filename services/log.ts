@@ -4,13 +4,19 @@ class Log {
     color: '#bd93f9',
     size: 14
   }
+  private pattern: Services.Log.CSS = this.defaults
 
-  print(message: string) {
+  set color(color: string) { this.pattern.color = color }
+  set backgroundColor(backgroundColor: string) { this.pattern.backgroundColor = backgroundColor }
+  set size(size: number) { this.pattern.size = size}
+  set settings(settings: Services.Log.CSS) { this.pattern = { ...this.pattern, ...this.settings } }
+
+  public print(message: string) {
     console.log(message)
   }
 
-  c(message: string, css: Services.Log.CSS = this.defaults) {
-    css = { ...this.defaults, ...css }
+  public colored(...message: string[]) {
+    const css = { ...this.defaults, ...this.pattern }
     console.log(
       `%c${message}`,
       `
