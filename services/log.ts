@@ -15,8 +15,8 @@ class Log {
     console.log(message)
   }
 
-  public colored(...message: string[]) {
-    const css = { ...this.defaults, ...this.pattern }
+  public colored(message: string, settings?: Services.Log.CSS) {
+    const css = { ...this.defaults, ...this.pattern, ...settings }
     console.log(
       `%c${message}`,
       `
