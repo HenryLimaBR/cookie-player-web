@@ -31,7 +31,7 @@ class Api {
 		}
 	}
 
-	public cover(url: string) { return `${this.baseURL}/api/album?i=${url}` }
+	public cover(url: string) { return `${this.baseURL}/api/image?i=${url}` }
 }
 
 
