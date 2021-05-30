@@ -10,6 +10,10 @@
   &:hover {
     background-color: #0008;
   }
+
+  &:hover .image_container .music_state {
+    opacity: 1;
+  }
 }
 
 .image_container {
@@ -21,6 +25,7 @@
   align-items: center;
   border-radius: 6px;
   overflow: hidden;
+  cursor: pointer;
 
   .image {
     width: 100%;
