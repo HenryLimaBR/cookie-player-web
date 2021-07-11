@@ -1,2 +1,3 @@
 # cookie-player-web
-This is a demo project
+
+This is my first "complex" project ^^, so be patiente if you like and want to use. ^^ 😅
