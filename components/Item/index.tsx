@@ -21,7 +21,7 @@ class Item extends React.Component<RC.ItemProps, RC.ItemState> {
     this.setLoadingMedia = this.setLoadingMedia.bind(this)
   }
 
-  private setLoadingMedia(state: boolean) {
+  setLoadingMedia(state: boolean) {
     this.setState({ loadingMedia: state })
   }
 
@@ -75,7 +75,7 @@ class Item extends React.Component<RC.ItemProps, RC.ItemState> {
         >
           <img
             className={style.image}
-            src={this.props.info.image}
+            src={this.props.info.thumbnail}
             alt={`${this.props.info.title}`}
             title={`${this.props.info.title}`}
             style={isPlayingNow ? {
