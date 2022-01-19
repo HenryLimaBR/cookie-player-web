@@ -1,3 +1,4 @@
 # cookie-player-web
 
-This is my first "complex" project ^^, so be patiente if you like and want to use. ^^ 😅
+I created a new project from scratch! :)  
+[Cookie Player 2](https://github.com/henrylimabr/cookie-player-2)
